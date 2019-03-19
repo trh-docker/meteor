@@ -1,6 +1,8 @@
 FROM quay.io/spivegin/tlmbasedebian
 RUN mkdir /opt/bin/
 ADD files/bash/install.sh /opt/bin/install.sh
+WORKDIR /opt/tlm/
+ENV METEOR_ALLOW_SUPERUSER=true
 RUN apt-get update && apt-get install -y curl &&\
     chmod +x /opt/bin/install.sh &&\
     sh /opt/bin/install.sh &&\
